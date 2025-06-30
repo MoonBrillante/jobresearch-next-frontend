@@ -16,14 +16,25 @@ export default function JobDetailPage({ params }: JobDetailPageProps) {
 }*/
 
 import JobDetail from '@/components/JobDetail';
+type Props = {
+  params: {
+    id: string;
+  };
+};
 
-interface JobDetailPageProps {
+export default function JobDetailPage({ params }: Props) {
+  return <JobDetail jobId={params.id} />;
+}
+
+
+
+/*interface JobDetailPageProps {
   params: { id: string };
 }
 
 export default async function JobDetailPage({ params }: JobDetailPageProps) {
   return <JobDetail jobId={params.id} />;
-}
+}*/
 
 
 
