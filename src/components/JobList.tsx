@@ -18,6 +18,8 @@ type JobListProps = {
     logOut?: () => void;
 }
 function JobList({ logOut }: JobListProps) {
+    console.log("🚧 Using updated JobList.tsx");
+
     const [open, setOpen] = useState(false);
     const queryClient = useQueryClient();
     const router = useRouter();
