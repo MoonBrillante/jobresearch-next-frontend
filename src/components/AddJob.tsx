@@ -55,8 +55,10 @@ function AddJob() {
             return;
         }
 
-       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        const { id, ...jobWithoutId } = job;
+    
+        const { id: _, ...jobWithoutId } = job;
+
+
         const jobToSubmit: Omit<Job, 'id'> = {
             ...jobWithoutId,
             skills: skillsInput.split(',').map(s => s.trim()).filter(Boolean),
