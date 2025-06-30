@@ -56,7 +56,7 @@ function AddJob() {
         }
 
 
-        const { id, ...jobWithoutId } = job;
+        const { id: _discardedId, ...jobWithoutId } = job;
         const jobToSubmit: Omit<Job, 'id'> = {
             ...jobWithoutId,
             skills: skillsInput.split(',').map(s => s.trim()).filter(Boolean),

@@ -4,6 +4,7 @@ import { useEffect, useState } from 'react';
 import { getJobById } from '../api/jobapi'; 
 import { Box, Typography, Button } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { Job } from '../types/types';
 
 interface JobDetailProps {
   jobId: string;
@@ -11,15 +12,9 @@ interface JobDetailProps {
 
 function JobDetail({ jobId }: JobDetailProps) {
   const router = useRouter();
-  const [job, setJob] = useState<any>(null);
-/*
-  useEffect(() => {
-  
-    if (jobId) {
-      getJobById(Number(jobId)).then(data => setJob(data));
-    }
-  }, [jobId]);*/
-  // JobDetail.tsx
+  //const [job, setJob] = useState<any>(null);
+  const [job, setJob] = useState<Job | null>(null);
+
   useEffect(() => {
     if (jobId) {
       getJobById(Number(jobId))
@@ -30,7 +25,7 @@ function JobDetail({ jobId }: JobDetailProps) {
           console.error("❌ Failed to fetch job:", err);
         });
     }
-  }, [jobId]);  // ✅ 正确位置
+  }, [jobId]);  
   
   
 

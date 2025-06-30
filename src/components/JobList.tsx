@@ -11,6 +11,9 @@ import Stack from '@mui/material/Stack';
 import EditJob from './EditJob';
 import { useRouter } from 'next/navigation';
 import Button from '@mui/material/Button';
+import { Job } from '../types/types';
+
+
 
 type JobListProps = {
     logOut?: () => void;
@@ -25,7 +28,7 @@ function JobList({ logOut }: JobListProps) {
         if (!token) {
             router.push('/login');
         }
-    }, []);
+    }, [router]);
 
 
     const { data, error, isLoading } = useQuery({
@@ -135,8 +138,9 @@ function JobList({ logOut }: JobListProps) {
         <>
             <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <AddJob />
+                <Button onClick={logOut}>Log out</Button>
             </Stack>
-            <Button onClick={logOut}>Log out</Button>
+            
             <DataGrid
                 rows={data ?? []}
                 columns={columns}
