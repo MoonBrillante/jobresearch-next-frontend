@@ -55,8 +55,10 @@ function AddJob() {
             return;
         }
 
-    
-        const { id: _, ...jobWithoutId } = job;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { id: _, ...jobWithoutId } = job;
+
+        
 
 
         const jobToSubmit: Omit<Job, 'id'> = {

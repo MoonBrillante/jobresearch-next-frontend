@@ -11,7 +11,6 @@ import Stack from '@mui/material/Stack';
 import EditJob from './EditJob';
 import { useRouter } from 'next/navigation';
 import Button from '@mui/material/Button';
-import { Job } from '../types/types';
 
 
 
@@ -23,6 +22,7 @@ function JobList({ logOut }: JobListProps) {
     const queryClient = useQueryClient();
     const router = useRouter();
 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const token = sessionStorage.getItem("jwt");
         if (!token) {
