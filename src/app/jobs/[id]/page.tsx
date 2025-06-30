@@ -28,14 +28,6 @@ export default function JobDetailPage({ params }: Props) {
 
 
 
-/*interface JobDetailPageProps {
-  params: { id: string };
-}
-
-export default async function JobDetailPage({ params }: JobDetailPageProps) {
-  return <JobDetail jobId={params.id} />;
-}*/
-
 
 
 

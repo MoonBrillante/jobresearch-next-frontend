@@ -56,7 +56,8 @@ function AddJob() {
         }
 
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    const { id: _, ...jobWithoutId } = job;
+    //const { id: _, ...jobWithoutId } = job;
+    const jobWithoutId = (({ id, ...rest }) => rest)(job);
 
         
 
