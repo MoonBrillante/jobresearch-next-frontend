@@ -1,5 +1,10 @@
 'use client';
-import DashboardTabs from './DashboardTabs';
+import dynamic from 'next/dynamic';
+
+
+const DashboardTabs = dynamic(() => import('./DashboardTabs'), {
+    ssr: false,
+    });
 
 export default function DashboardPageWrapper() {
 
