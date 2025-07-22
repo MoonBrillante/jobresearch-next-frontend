@@ -1,8 +1,13 @@
 'use client';
 import { useState } from 'react';
-import { Box, Tabs, Tab, Stack } from '@mui/material';
-import { Bar } from 'react-chartjs-2';
-import { subDays, isAfter } from 'date-fns';
+import { Box, Tabs, Tab, Stack, Button } from '@mui/material';
+import { Bar, Pie } from 'react-chartjs-2';
+import { subDays, isAfter, format, parseISO } from 'date-fns';
+import { useRouter } from 'next/navigation';
+import { useQuery } from '@tanstack/react-query';
+import { getJobs } from '../../api/jobapi';
+import { Job } from '../../types/types';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import {
     Chart as ChartJS,
     CategoryScale,
@@ -28,10 +33,15 @@ type Props = {
     jobs: Job[];
 };
 
-export default function DashboardTabs({ jobs }: Props) {
+export default function DashboardTabs() {
     const router = useRouter();
     const [tab, setTab] = useState(0);
 
+    const { data: jobs = [], isLoading, error } = useQuery({
+        queryKey: ['jobs'],
+        queryFn: getJobs,
+    });
+    
     const groupCountBy = (key: keyof Job) => {
         const map = new Map<string, number>();
         const today = new Date();

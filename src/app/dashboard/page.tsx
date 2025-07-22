@@ -5,7 +5,7 @@ import { Job } from '../../types/types';
 import DashboardTabs from './DashboardTabs';
 
 export default function DashboardPageWrapper() {
-    
+
     const [jobs, setJobs] = useState<Job[]>([]);
 
     useEffect(() => {
@@ -16,7 +16,7 @@ export default function DashboardPageWrapper() {
 
     return (
         <div style={{ padding: '2rem'}}>
-            <DashboardTabs jobs={jobs} />
+            <DashboardTabs  />
         </div>
     );
 }
