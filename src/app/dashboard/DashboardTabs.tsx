@@ -63,9 +63,21 @@ export default function DashboardTabs() {
             map.set(groupKey, (map.get(groupKey) || 0) + 1);
         });
 
+        // 🧠 Sort keys if 'postedDate'
+    const entries = Array.from(map.entries());
+
+    if (key === 'postedDate') {
+        entries.sort((a, b) => {
+            return parseISO(a[0]).getTime() - parseISO(b[0]).getTime();
+        });
+    } else {
+        entries.sort((a, b) => a[0].localeCompare(b[0]));
+    }
+
+
         return {
-            labels: Array.from(map.keys()),
-            counts: Array.from(map.values()),
+            labels: entries.map(([key]) => key),
+            counts: entries.map(([_, count]) => count),
         };
     };
 
