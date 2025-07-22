@@ -1,5 +1,3 @@
-// src/app/jobs/[id]/page.tsx
-
 import JobDetail from '@/components/JobDetail';
 type Props = {
   params: {

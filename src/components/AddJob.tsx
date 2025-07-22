@@ -12,15 +12,11 @@ import Button from '@mui/material/Button';
 
 function AddJob() {
     const queryClient = useQueryClient();
-
     const [open, setOpen] = useState(false);
     const [job, setJob] = useState<Job>(emptyJob);
 
-
     const [skillsInput, setSkillsInput] = useState('');
     //const [toolsInput, setToolsInput] = useState('');
-
-
 
     const { mutate } = useMutation<Job, AxiosError, Omit<Job, 'id'>>({
         mutationFn: addJob,
@@ -55,17 +51,11 @@ function AddJob() {
             return;
         }
 
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    //const { id: _, ...jobWithoutId } = job;
     const jobWithoutId = (({ id, ...rest }) => rest)(job);
-
-        
-
 
         const jobToSubmit: Omit<Job, 'id'> = {
             ...jobWithoutId,
             skills: skillsInput.split(',').map(s => s.trim()).filter(Boolean),
-            //tools: toolsInput.split(',').map(t => t.trim()).filter(Boolean),
 
         };
         Object.entries(jobToSubmit).forEach(([key, value]) => {
@@ -77,7 +67,6 @@ function AddJob() {
         mutate(jobToSubmit);
         setJob(emptyJob);
         setSkillsInput('');
-        //setToolsInput('');
         handleClose(); console.log(jobToSubmit)
     }
 
@@ -89,11 +78,8 @@ function AddJob() {
                 <JobDialogContent
                     job={job}
                     handleChange={handleChange}
-                    skillsInput={skillsInput}
-                    
+                    skillsInput={skillsInput}                   
                     setSkillsInput={setSkillsInput}
-                
-
                 />
                 <DialogActions>
                     <Button onClick={handleClose}>Cancel</Button>

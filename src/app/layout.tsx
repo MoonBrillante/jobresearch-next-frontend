@@ -2,7 +2,6 @@ import { ReactNode } from "react";
 import { CssBaseline, AppBar, Toolbar, Typography, Container } from '@mui/material'
 import ClientProviders from '@/components/ClientProviders';
 
-
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">

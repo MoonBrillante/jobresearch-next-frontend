@@ -62,3 +62,11 @@ export const getJobById = async (id: number): Promise<Job> => {
     const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/jobs/${id}`, getAxiosConfig());
     return response.data;
 }
+
+export const getDailyApplications = async (): Promise<{ date: string; count: number }[]> => {
+    const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/api/analytics/daily-applications`,
+        getAxiosConfig()
+    );
+    return response.data;
+};

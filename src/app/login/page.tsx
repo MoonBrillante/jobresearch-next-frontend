@@ -45,11 +45,11 @@ function Login() {
                 console.log("JWT Token:", jwtToken);  // Output the obtained JWT Token
 
                 if (jwtToken) {
-                    sessionStorage.setItem("jwt", jwtToken);  // Only store the token without the `Bearer` prefix
+                    const cleanedToken = jwtToken.replace(/^Bearer\s/, '');
+                    sessionStorage.setItem("jwt", cleanedToken);
                     console.log("Stored JWT Token:", sessionStorage.getItem("jwt"));  // Check if the Token is stored correctly
                     setAuth(true);
                     router.push('/jobs');
-
                 } else {
                     setErrorMessage("No JWT Token found in response.");
                     setOpen(true);

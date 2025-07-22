@@ -30,7 +30,7 @@ function JobDetail({ jobId }: JobDetailProps) {
   
 
   if (!job) {
-    return <div><p>Loading...</p> <p>jobId: {jobId}</p></div>;
+    return <div><p>Loading...</p> </div>;
   }
 
   return (

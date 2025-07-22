@@ -27,6 +27,9 @@ function JobList({ logOut }: JobListProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         const token = sessionStorage.getItem("jwt");
+        console.log("New JWT:", token);
+        console.log("Current JWT:", sessionStorage.getItem("jwt"));
+
         if (!token) {
             router.push('/login');
         }
@@ -140,6 +143,15 @@ function JobList({ logOut }: JobListProps) {
         <>
             <Stack direction="row" alignItems="center" justifyContent="space-between">
                 <AddJob />
+                <Button
+                    variant="outlined"
+                    color="primary"
+                    onClick={() => window.location.href = '/dashboard'}
+                    sx={{ textTransform: 'none', border: 'none' }} 
+                >
+                    📊 Dashboard
+                </Button>
+
                 <Button onClick={logOut}>Log out</Button>
             </Stack>
             
